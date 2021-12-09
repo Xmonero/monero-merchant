@@ -3,7 +3,7 @@ import { SwaggerRouter } from 'koa-swagger-decorator'
 const router = new SwaggerRouter()
 
 router.swagger({
-  title: 'Monero Merchant',
+  title: 'Quenero Merchant',
   description: 'API Documentation',
   version: '0.0.1',
   swaggerHtmlEndpoint: '/swagger-html',

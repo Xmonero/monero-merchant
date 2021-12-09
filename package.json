@@ -1,7 +1,7 @@
 {
-  "name": "monero-merchant",
+  "name": "quenero-merchant",
   "version": "0.0.1",
-  "description": "restful api wrapper for official monero(xmr) wallet rpc",
+  "description": "restful api wrapper for official quenero(qmr) wallet rpc",
   "main": "app.js",
   "scripts": {
     "build": "tsc",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RuiSiang/monero-merchant.git"
+    "url": "git+https://github.com/Xmonero/quenero-merchant.git"
   },
   "author": "",
   "license": "Apache",
   "bugs": {
-    "url": "https://github.com/RuiSiang/monero-merchant/issues"
+    "url": "https://github.com/Xmonero/quenero-merchant/issues"
   },
-  "homepage": "https://github.com/RuiSiang/monero-merchant#readme",
+  "homepage": "https://github.com/Xmonero/quenero-merchant#readme",
   "dependencies": {
     "@open-rpc/client-js": "^1.6.3",
     "cron": "^1.8.2",

@@ -2,23 +2,23 @@ import { RequestManager, HTTPTransport, Client } from '@open-rpc/client-js'
 
 import config from '../config'
 
-export default class Xmr {
-  private static instance: Xmr
-  public static getInstance(): Xmr {
-    if (!Xmr.instance) {
-      Xmr.instance = new Xmr()
+export default class qmr {
+  private static instance: Qmr
+  public static getInstance(): Qmr {
+    if (!Qmr.instance) {
+      Qmr.instance = new Qmr()
     }
-    return Xmr.instance
+    return Qmr.instance
   }
-  private xmrTransport = new HTTPTransport(
+  private qmrTransport = new HTTPTransport(
     `http://${config.crypto.host || 'localhost'}:${
-      config.crypto.port || '18082'
+      config.crypto.port || '19991'
     }/json_rpc`
   )
-  private xmrClient = new Client(new RequestManager([this.xmrTransport]))
+  private qmrClient = new Client(new RequestManager([this.qmrTransport]))
   public newAddress = async () => {
     try {
-      const addressInfo = await this.xmrClient.request({
+      const addressInfo = await this.qmrClient.request({
         method: 'make_integrated_address',
         params: {},
       })
@@ -34,7 +34,7 @@ export default class Xmr {
     }
   }
   public scanPaymentId = async (paymentId: string) => {
-    const xmrData = await this.xmrClient.request({
+    const qmrData = await this.qmrClient.request({
       method: 'get_payments',
       params: {
         payment_id: paymentId,
@@ -42,15 +42,15 @@ export default class Xmr {
     })
     let confirmed = 0,
       unconfirmed = 0
-    if (xmrData.payments) {
-      for (let i = 0; i < xmrData.payments.length; i++) {
+    if (qmrData.payments) {
+      for (let i = 0; i < qmrData.payments.length; i++) {
         if (
-          parseInt(xmrData.payments[i].unlock_time) <=
+          parseInt(qmrData.payments[i].unlock_time) <=
           Math.max(10 - config.crypto.minConfirmations || 8, 0)
         ) {
-          confirmed += parseInt(xmrData.payments[i].amount) / 1000000000000
+          confirmed += parseInt(qmrData.payments[i].amount) / 1000000000
         }
-        unconfirmed += parseInt(xmrData.payments[i].amount) / 1000000000000
+        unconfirmed += parseInt(qmrData.payments[i].amount) / 1000000000
       }
     }
     return { confirmed, unconfirmed }

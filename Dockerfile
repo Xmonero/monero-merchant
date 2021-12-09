@@ -7,7 +7,7 @@ RUN npm prune --production
 RUN /usr/local/bin/node-prune
 
 FROM node:17-alpine
-WORKDIR /usr/src/monero-merchang
+WORKDIR /usr/src/quenero-merchang
 COPY --from=BUILD_IMAGE /build/dist .
 COPY --from=BUILD_IMAGE /build/node_modules ./node_modules
 CMD [ "node", "app.js" ]

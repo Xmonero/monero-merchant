@@ -1,10 +1,10 @@
-export default class Xmr {
-  private static instance: Xmr
-  public static getInstance(): Xmr {
-    if (!Xmr.instance) {
-      Xmr.instance = new Xmr()
+export default class Qmr {
+  private static instance: Qmr
+  public static getInstance(): Qmr {
+    if (!Qmr.instance) {
+      Qmr.instance = new Qmr()
     }
-    return Xmr.instance
+    return Qmr.instance
   }
   public newAddress = async () => {
     return {

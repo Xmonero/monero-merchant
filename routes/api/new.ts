@@ -14,7 +14,7 @@ export default class NewRouter {
     amount: {
       type: 'number',
       require: true,
-      description: 'invoice amount (XMR)',
+      description: 'invoice amount (QMR)',
       nullable: true,
     },
     description: {

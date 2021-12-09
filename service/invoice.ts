@@ -4,14 +4,14 @@ import validator from 'validator'
 import { getRepository } from 'typeorm'
 
 import config from '../config'
-import Xmr from './xmr'
-import XmrMock from './xmr-mock'
+import Qmr from './qmr'
+import QmrMock from './qmr-mock'
 import { Invoice } from './orm'
 
-const xmr =
+const qmr =
   config.crypto.mock || process.env.NODE_ENV === 'test'
-    ? XmrMock.getInstance()
-    : Xmr.getInstance()
+    ? QmrMock.getInstance()
+    : Qmr.getInstance()
 
 export const newInvoice = async (
   amount: number,
@@ -31,9 +31,9 @@ export const newInvoice = async (
   ) {
     return { status: 400, response: 'Invalid refund address format' }
   }
-  const { paymentId, address } = await xmr.newAddress()
+  const { paymentId, address } = await qmr.newAddress()
   if (!address) {
-    return { status: 500, response: 'Xmr address generation error' }
+    return { status: 500, response: 'Qmr address generation error' }
   }
   const id = randomstring.generate(16)
   await getRepository(Invoice)

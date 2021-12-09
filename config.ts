@@ -6,7 +6,7 @@ const connection = {
 const crypto = {
   mock: (process.env.CRYPTO_MOCK || 'false') === 'false', // whether to use stub wallet, for testing use
   host: process.env.CRYPTO_HOST || '127.0.0.1', // Monero wallet RPC hostname
-  port: process.env.CRYPTO_PORT || '18082', // Monero wallet RPC port
+  port: process.env.CRYPTO_PORT || '19991', // Quenero wallet RPC port
   minConfirmations: parseInt(process.env.MIN_CONFIRMATIONS || '2'), // minimum number of confirmations to consider as received
 }
 

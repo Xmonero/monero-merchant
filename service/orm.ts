@@ -1,6 +1,6 @@
 import { ConnectionOptions, Column, Entity } from 'typeorm'
 
-@Entity('invoice', { schema: 'monero_merchant' })
+@Entity('invoice', { schema: 'quenero_merchant' })
 export class Invoice {
   @Column('varchar', { primary: true, name: 'id', length: 16 })
   id: string

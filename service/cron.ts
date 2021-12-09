@@ -3,14 +3,14 @@ import { CronJob } from 'cron'
 import { getRepository } from 'typeorm'
 
 import config from '../config'
-import Xmr from './xmr'
-import XmrMock from './xmr-mock'
+import Qmr from './qmr'
+import QmrMock from './qmr-mock'
 import { Invoice } from './orm'
 
-const xmr =
+const qmr =
   config.crypto.mock || process.env.NODE_ENV === 'test'
-    ? XmrMock.getInstance()
-    : Xmr.getInstance()
+    ? QmrMock.getInstance()
+    : Qmr.getInstance()
 
 const scanInvoices = new CronJob('*/30 * * * * *', async () => {
   try {
@@ -22,7 +22,7 @@ const scanInvoices = new CronJob('*/30 * * * * *', async () => {
 
     await Promise.all(
       invoices.map(async (invoice) => {
-        let { confirmed, unconfirmed } = await xmr.scanPaymentId(
+        let { confirmed, unconfirmed } = await qmr.scanPaymentId(
           invoice.paymentId
         )
         confirmed = roundTo(confirmed, 8)
